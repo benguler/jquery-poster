@@ -1,0 +1,104 @@
+<!doctype html>
+
+<html>
+
+<head>
+  <title>Poster</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+  <script>
+
+    var postAuthor = "";
+    var postTitle = "";
+    var postBody = "";
+
+    $(document).ready(function(){
+      $("form").on("submit", function(e){
+          postAuthor = $(".author").val();
+          postTitle = $(".title").val();
+          postBody = $(".body").val();
+
+          if(postAuthor!="" && postTitle!="" && postBody!=""){
+            $(".posts").append('<div class=post><h4>'+postTitle+'</h4><p>'+postBody+'</p></br><p id="postAuthor">by '+postAuthor+'</p></div>');
+
+          }else{
+            alert("Please include post author and body!");
+
+          }
+
+          e.preventDefault();
+
+      });
+
+    });
+
+  </script>
+
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #B3D1E1;
+
+    }
+
+    p {
+      text-align: justify;
+    }
+
+    .formBody{
+      background-color: #E7F1F6;
+      width: 700px;
+      padding: 10px;
+    }
+
+    .post {
+      background-color: #E7F1F6;
+      width: 700px;
+      margin-top: 10px;
+      margin-left: 5px;
+      padding-top: 5px;
+      padding-right: 10px;
+      padding-left: 10px;
+      padding-bottom: 10px;
+
+    }
+
+    #postAuthor{
+      font-style: italic;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+  <h1>Poster</h1>
+
+  <div class="formBody">
+    <form class="form" action="" id="form1">
+      <label for="title">Title:</label><br>
+      <input type="text" class="title" id="title" name="title"><br>
+
+      <label for="title">Author:</label><br>
+      <input type="text" class="author" id="author" name="author"><br>
+
+      <label for="body">Body:</label><br>
+      <textarea name="name" rows="8" cols="64" class="body" id="body" name="body"></textarea><br>
+
+    </form>
+
+    <button type="submit" form="form1" value="Submit" id="submitButton">Submit</button>
+
+  </div>
+
+  <h2>Posts</h2>
+
+  <div class="posts">
+
+  </div>
+
+</body>
+
+</html>
